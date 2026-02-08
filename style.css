@@ -1,0 +1,551 @@
+/* 
+body {
+  background: url("./images/pngtree-misty-blue-mountains-beneath-a-cloudy-sky-image_21100181.webp")
+    center/cover no-repeat fixed;
+
+  transition: background 0.6s ease-in-out;
+}
+
+.weather {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.appname {
+  color: black;
+  font-weight: bolder;
+}
+
+.temp {
+  font-size: 40px;
+}
+
+.city {
+  font-size: 30px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+
+
+.message {
+  margin-top: 20px;
+  color: red;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+.container {
+  margin-top: 100px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  max-width: 500px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#inputcity {
+  background-color: transparent;
+  border-radius: 25px;
+
+  width: 100%;
+  max-width: 35rem;
+
+  padding: 10px;
+}
+
+#inputcity::placeholder {
+  color: dimgray;
+  background: transparent;
+  text-align: center;
+  font-size: larger;
+}
+
+#inputcity:focus {
+  border-color: red;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+}
+
+#inputcity:hover {
+  border-color: green;
+  outline: none;
+}
+
+.cloud-bg {
+  background: url("images/cloudy.jpg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.rain-bg {
+  background: url("images/rainy.jpg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.sunny-bg {
+  background: url("images/sunny.jpg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.snow-bg {
+  background: url("images/snow.jpg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.night-bg {
+  background: url("images/night.jpg") center/cover no-repeat fixed;
+  color: black;
+}
+
+.fog-bg {
+  background: url("images/fogbg.jpg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.default-bg {
+  background: url("images/pngtree-misty-blue-mountains-beneath-a-cloudy-sky-image_21100181.webp")
+    center/cover no-repeat fixed;
+  color: white;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .search {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 759px) and (max-width: 1024px) {
+  .search {
+    display: flex;
+    gap: 10px;
+  }
+
+  .container {
+    min-width: 600px;
+  }
+}
+
+
+
+@media (min-width: 1025px) {
+  .container {
+    max-width: 700px;
+  }
+
+  .search {
+    display: flex;
+    gap: 10px;
+  }
+} */
+
+/* ================= GLOBAL ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+
+  background: url("./images/pngtree-misty-blue-mountains-beneath-a-cloudy-sky-image_21100181.webp")
+    center/cover no-repeat fixed;
+
+  transition:
+    background 0.8s ease,
+    color 0.4s ease;
+}
+
+/* ================= GLASSMORPHISM CARD ================= */
+
+.container {
+  margin-top: 80px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  max-width: 500px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= WEATHER ================= */
+
+.weather {
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  text-align: center;
+}
+
+.appname {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.temp {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.city {
+  font-size: 28px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+  gap: 40px;
+}
+
+/* ================= SEARCH INPUT ================= */
+
+.search {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+#inputcity {
+  width: 100%;
+  max-width: 35rem;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  padding: 12px;
+
+  color: black;
+}
+
+#inputcity::placeholder {
+  text-align: center;
+  color: black;
+}
+
+#inputcity:focus {
+  outline: none;
+
+  border-color: rgba(255, 255, 255, 0.8);
+
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* ================= BUTTON ================= */
+
+.button {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ================= MESSAGE ================= */
+
+.message {
+  margin-top: 20px;
+  color: red;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+/* ================= WEATHER BACKGROUNDS ================= */
+
+.cloud-bg {
+  background: url("images/cloudy.jpg") center/cover no-repeat fixed;
+}
+
+.rain-bg {
+  background: url("images/rainy.jpg") center/cover no-repeat fixed;
+}
+
+.sunny-bg {
+  background: url("images/sunny.jpg") center/cover no-repeat fixed;
+}
+
+.snow-bg {
+  background: url("images/snow.jpg") center/cover no-repeat fixed;
+}
+
+.night-bg {
+  background: url("images/night.jpg") center/cover no-repeat fixed;
+}
+
+.fog-bg {
+  background: url("images/fogbg.jpg") center/cover no-repeat fixed;
+}
+
+.default-bg {
+  background: url("images/pngtree-misty-blue-mountains-beneath-a-cloudy-sky-image_21100181.webp")
+    center/cover no-repeat fixed;
+}
+
+/* ================= AUTO TEXT COLOR (PRO FEATURE) ================= */
+
+/* dark backgrounds */
+.cloud-bg,
+.rain-bg,
+.fog-bg,
+.default-bg,
+.night-bg 
+{
+  color: white;
+}
+
+/* bright backgrounds */
+.snow-bg,
+.sunny-bg {
+  color: black;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Weather Animations */
+.weather-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ================= RAIN-Animation ================= */
+
+.rain {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.rain::before {
+  content: "";
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.4) 3px,
+    rgba(255, 255, 255, 0.4) 4px
+  );
+
+  animation: rainFall 0.3s linear infinite;
+}
+
+@keyframes rainFall {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* ================= SNOW-Animation ================= */
+
+.snow {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.snow::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(white 2px, transparent 2px);
+
+  background-size: 50px 50px;
+
+  animation: snowFall 8s linear infinite;
+}
+
+@keyframes snowFall {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Weather Icon */
+
+.weather-icon {
+  width: 120px;
+  height: 120px;
+  transition: transform 0.5s ease;
+}
+
+/* ===== SUNNY ANIMATION ===== */
+
+.sunny-icon {
+  animation: sunRotate 8s linear infinite;
+}
+
+@keyframes sunRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== CLOUD FLOAT ===== */
+
+.cloud-icon {
+  animation: cloudFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes cloudFloat {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== RAIN SHAKE ===== */
+
+.rain-icon {
+  animation: rainShake 0.6s infinite;
+}
+
+@keyframes rainShake {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ===== SNOW FLOAT ===== */
+
+.snow-icon {
+  animation: snowFloat 2s ease-in-out infinite alternate;
+}
+
+@keyframes snowFloat {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+/* ===== NIGHT GLOW ===== */
+
+.night-icon {
+  animation: moonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  from {
+    filter: drop-shadow(0 0 5px white);
+  }
+  to {
+    filter: drop-shadow(0 0 20px white);
+  }
+}
