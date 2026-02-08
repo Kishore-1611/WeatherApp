@@ -25,7 +25,7 @@ async function checkWeather(name) {
 
       return;
     } else {
-      console.log(data);
+      // console.log(data);
       document.querySelector(".city").innerHTML =
         `${data.name},${data.sys.country}`;
       document.querySelector(".temp").innerHTML = Math.round(data.main.temp);
